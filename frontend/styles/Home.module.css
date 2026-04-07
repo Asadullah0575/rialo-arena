@@ -1,0 +1,136 @@
+.root {
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+}
+
+.header {
+  text-align: center;
+  padding: 48px 0 24px;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--neon-blue);
+  letter-spacing: 4px;
+}
+
+.sub {
+  font-size: 13px;
+  color: var(--neon-purple);
+  letter-spacing: 3px;
+  margin-top: 4px;
+}
+
+.inputWrap {
+  margin-bottom: 24px;
+}
+
+.nameInput {
+  width: 100%;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  color: #fff;
+  font-size: 16px;
+  transition: border-color 0.2s;
+}
+
+.nameInput:focus {
+  border-color: var(--neon-blue);
+}
+
+.nameInput::placeholder {
+  color: var(--text-muted);
+}
+
+.error {
+  color: var(--danger);
+  font-size: 12px;
+  margin-top: 6px;
+}
+
+.modes {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+.modeBtn {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-align: left;
+  transition: border-color 0.15s, background 0.15s;
+  color: #fff;
+  width: 100%;
+}
+
+.modeBtn:hover {
+  border-color: rgba(0, 229, 255, 0.4);
+  background: var(--bg3);
+}
+
+.modeFeatured {
+  border-color: rgba(138, 43, 226, 0.4);
+}
+
+.modeFeatured:hover {
+  border-color: var(--neon-purple);
+}
+
+.modeIcon {
+  font-size: 24px;
+  width: 48px;
+  height: 48px;
+  background: rgba(0,229,255,0.1);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.modeTitle {
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.modeDesc {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.hotBadge {
+  margin-left: auto;
+  background: rgba(138,43,226,0.2);
+  border: 1px solid rgba(138,43,226,0.5);
+  border-radius: 8px;
+  padding: 4px 10px;
+  font-size: 11px;
+  color: #c87cff;
+  flex-shrink: 0;
+}
+
+.footer {
+  padding: 24px 0;
+  text-align: center;
+}
+
+.footerStat {
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
