@@ -1,47 +1,75 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg: #0A0A0F;
-  --bg2: #12121f;
-  --bg3: #1a1a2e;
-  --neon-blue: #00E5FF;
-  --neon-purple: #8A2BE2;
-  --neon-green: #00FF9C;
-  --danger: #FF3B3B;
-  --amber: #FFB800;
-  --text: #ffffff;
-  --text-muted: #666;
-  --border: rgba(255,255,255,0.1);
-  --radius: 12px;
-  --radius-sm: 8px;
+  --bg: #0A0A0F; --bg2: #12121f; --bg3: #1a1a2e;
+  --neon-blue: #00E5FF; --neon-purple: #8A2BE2;
+  --neon-green: #00FF9C; --danger: #FF3B3B;
+  --amber: #FFB800; --text: #ffffff;
+  --text-muted: #666; --border: rgba(255,255,255,0.1);
+  --radius: 12px; --radius-sm: 8px; --card-bg: #12121f;
+}
+
+[data-theme="light"] {
+  --bg: #f0f0f5; --bg2: #ffffff; --bg3: #e8e8f0;
+  --neon-blue: #0066cc; --neon-purple: #6600cc;
+  --neon-green: #00aa66; --danger: #cc2200;
+  --amber: #cc8800; --text: #111111;
+  --text-muted: #777; --border: rgba(0,0,0,0.12);
+  --card-bg: #ffffff;
 }
 
 html, body {
-  background: var(--bg);
-  color: var(--text);
+  background: var(--bg); color: var(--text);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   min-height: 100vh;
+  -webkit-text-size-adjust: 100%;
+  touch-action: manipulation;
 }
 
+.safe-bottom { padding-bottom: env(safe-area-inset-bottom, 16px); }
 a { color: inherit; text-decoration: none; }
+button { cursor: pointer; font-family: inherit; border: none; outline: none; }
+input { font-family: inherit; outline: none; }
 
-button {
-  cursor: pointer;
-  font-family: inherit;
-  border: none;
-  outline: none;
+@keyframes shake {
+  0%,100%{transform:translateX(0)} 20%{transform:translateX(-8px)}
+  40%{transform:translateX(8px)} 60%{transform:translateX(-6px)} 80%{transform:translateX(6px)}
+}
+@keyframes pop {
+  0%{transform:scale(1)} 50%{transform:scale(1.2)} 100%{transform:scale(1)}
+}
+@keyframes slideUp {
+  from{transform:translateY(20px);opacity:0} to{transform:translateY(0);opacity:1}
+}
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.6} }
+@keyframes streakFire {
+  0%,100%{transform:scale(1) rotate(-3deg)} 50%{transform:scale(1.15) rotate(3deg)}
+}
+@keyframes countdownNum {
+  0%{transform:scale(1.8);opacity:0} 30%{opacity:1;transform:scale(1)}
+  80%{opacity:1} 100%{opacity:0;transform:scale(0.5)}
 }
 
-input {
-  font-family: inherit;
-  outline: none;
+.animate-shake{animation:shake 0.4s ease}
+.animate-pop{animation:pop 0.25s ease}
+.animate-slide-up{animation:slideUp 0.3s ease}
+.animate-fade-in{animation:fadeIn 0.3s ease}
+.animate-pulse{animation:pulse 1.5s ease infinite}
+.animate-streak{animation:streakFire 0.5s ease infinite}
+.animate-countdown{animation:countdownNum 0.9s ease forwards}
+
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg2)}
+::-webkit-scrollbar-thumb{background:var(--neon-purple);border-radius:2px}
+
+@media(max-width:480px){
+  button{min-height:44px}
+  input{min-height:44px;font-size:16px}
 }
 
-/* Scrollbar */
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: var(--bg2); }
-::-webkit-scrollbar-thumb { background: var(--neon-purple); border-radius: 2px; }
+#confetti-canvas {
+  position:fixed; top:0; left:0;
+  width:100%; height:100%;
+  pointer-events:none; z-index:9999;
+}
